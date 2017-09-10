@@ -40,17 +40,14 @@ public class UserController {
         user.setUserpassword(userpwd);
         int i = userservice.userlogin(user.getUserid(), user.getUserpassword());
         if (i > 0) {
-            if (code.equals(code1))
-            {
+            if (code.equals(code1)) {
                 request.getSession().setAttribute("userid", userid);
                 System.out.print("登录成功");
-            } else
-            {
+            } else {
                 System.out.print("登录失败,验证码错误!");
             }
 
-        } else
-        {
+        } else {
             System.out.print("登录失败,用户名或密码错误!");
         }
         return "aa";
@@ -58,6 +55,7 @@ public class UserController {
 
     /**
      * 按id修改信息
+     *
      * @param user
      * @param request
      * @return
@@ -69,8 +67,7 @@ public class UserController {
         System.out.print(userid);
         user.setUserid(userid);
         int u = userservice.userupdate(user);
-        if (u > 0)
-        {
+        if (u > 0) {
             System.out.print("ssss");
         }
         return "login";
@@ -78,6 +75,7 @@ public class UserController {
 
     /**
      * 按id查找個人信息
+     *
      * @param request
      * @return
      */
