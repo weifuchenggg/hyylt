@@ -1,0 +1,1 @@
+INSERT INTO `user` (`userid`, `username`, `userpassword`, `usersignature`, `usergrade`, `usergold`, `userphoto`, `reserved1`, `reserved2`, `reserved3`) VALUES ('wyc', NULL, 'YY', NULL, NULL, NULL, NULL, NULL, NULL, NULL);

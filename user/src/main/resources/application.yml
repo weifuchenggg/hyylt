@@ -6,4 +6,4 @@ server:
   port: 8090
 spring:
   application:
-    name: user
+    name: user1
