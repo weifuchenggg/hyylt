@@ -24,16 +24,16 @@ public class UserController {
         return "aa";
     }
     @RequestMapping("/login")
-    public String login(String username,String userpwd,String code,HttpServletRequest request,HttpServletResponse response){
+    public String login(String userid,String userpwd,String code,HttpServletRequest request,HttpServletResponse response){
         String code1 =(String) request.getSession().getAttribute("checkcode");
 
-        if((username==null ||username.equals(""))||(userpwd==null || userpwd.equals("")))
+        if((userid==null ||userid.equals(""))||(userpwd==null || userpwd.equals("")))
         {
             return "login";
         }
-        System.out.print(username+" "+userpwd);
+        System.out.print(userid+" "+userpwd);
         User user = new User();
-        user.setUsername(username);
+        user.setUsername(userid);
         user.setUserpassword(userpwd);
         int i =userservice.userlogin(user.getUsername(),user.getUserpassword());
         if (i>0)

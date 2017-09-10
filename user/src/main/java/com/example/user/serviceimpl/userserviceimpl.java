@@ -11,10 +11,10 @@ public class userserviceimpl implements userservice {
     @Autowired
     private UserMapper userMapper;
     @Override
-    public int userlogin(String username, String userpwd) {
+    public int userlogin(String userid, String userpwd) {
         UserExample userExample=new UserExample();
         UserExample.Criteria criteria=userExample.createCriteria();
-        criteria.andUsernameEqualTo(username);
+        criteria.andUseridEqualTo(userid);
         criteria.andUserpasswordEqualTo(userpwd);
         return this.userMapper.countByExample(userExample);
     }
