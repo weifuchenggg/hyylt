@@ -5,6 +5,7 @@ import com.example.user.service.userservice;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 
 @RequestMapping("/user")
-@Controller
+@RestController
 public class UserController {
 
     @Resource
@@ -21,18 +22,14 @@ public class UserController {
     @Value("${server.port}")
     String port;
 
-    @RequestMapping("/index")
-    public String index() {
 
-        return "aa";
-    }
 
     @RequestMapping("/login")
     public String login(String userid, String userpwd, String code, HttpServletRequest request, HttpServletResponse response) {
         String code1 = (String) request.getSession().getAttribute("checkcode");
 
         if ((userid == null || userid.equals("")) || (userpwd == null || userpwd.equals(""))) {
-            return "login";
+            return "false";
         }
         System.out.print(userid + " " + userpwd);
         User user = new User();
@@ -45,12 +42,14 @@ public class UserController {
                 System.out.print("登录成功");
             } else {
                 System.out.print("登录失败,验证码错误!");
+                return "false";
             }
 
         } else {
             System.out.print("登录失败,用户名或密码错误!");
+            return "false";
         }
-        return "aa";
+        return "success";
     }
 
     /**

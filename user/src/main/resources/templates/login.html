@@ -7,6 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 </head>
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+    $(function () {
+        $('#commit').click(function () {
+            $.ajax({
+                type : "POST",  //提交方式
+                url : "/user/login",//路径
+                data : {
+                    "userid" : $('#username').val(), "userpwd":$('#pws').val(),"code":$('#yzm').val()
+                },//数据，这里使用的是Json格式进行传输
+                success : function(result) {//返回数据根据结果进行相应的处理
+                 //   var s=eval(result);
+                   // alert(result);
+                   if('false'==result.toString()) alert('帐号或者密码错误！！！');
+                   else  alert('跳转');
+                }
+            });
+        });
+    })
+
+</script>
 <style type="text/css">
                       .ff{
                           width: 1000px;
@@ -17,16 +39,14 @@
 
 </style>
 <body>
-<form id = "form1" action="/user/login" method="post">
       <div class="ff">
-        用 户 : <input type="text" name="username" style="width:150px;height:23px; margin-top: 10px"/><br/>
-        密 码 : <input type="password" name="userpwd" style="width:150px;height:23px; margin-top: 10px;" /><br/>
-        验证码: <span><input type="text" name="code" size="6" style="padding-top: 5px"/>
+        用 户 : <input id="username" type="text" name="username" style="width:150px;height:23px; margin-top: 10px"/><br/>
+        密 码 : <input id="pws" type="password" name="userpwd" style="width:150px;height:23px; margin-top: 10px;" /><br/>
+        验证码: <span><input id="yzm" type="text" name="code" size="6" style="padding-top: 5px"/>
                 <img src="/code/getcode" style=" margin-top: 10px;width: 75px;height: 20px"/></span>
                 <br/>
                 <input type="reset" value="重置"  style=" margin-top: 10px;margin-left: 70px;" />
-                <input type="submit" value="登录" style="margin-left: 18px"/>
+                <input id="commit" type="submit" value="登录" style="margin-left: 18px"/>
       </div>
-    </form>
 </body>
 </html>

@@ -52,14 +52,14 @@ public class getcheckcode {
         try {
             ImageIO.write(image, "jpg", response.getOutputStream());
         } catch (IOException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
 
         } finally {
             try {
                 response.getOutputStream().flush();
                 response.getOutputStream().close();
             } catch (IOException e) {
-                e.printStackTrace();
+             //   e.printStackTrace();
             }
 
         }
