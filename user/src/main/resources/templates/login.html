@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<style type="text/css">
+                      .ff{
+                          width: 1000px;
+                          height: 1000px;
+                          margin-top: 20%;
+                          margin-left: 50%;
+                      }
+
+</style>
+<body>
+<form id = "form1" action="/user/login" method="post">
+      <div class="ff">
+        用 户 : <input type="text" name="username" style="width:150px;height:23px; margin-top: 10px"/><br/>
+        密 码 : <input type="password" name="userpwd" style="width:150px;height:23px; margin-top: 10px;" /><br/>
+        验证码: <span><input type="text" name="code" size="6" style="padding-top: 5px"/>
+                <img src="/code/getcode" style=" margin-top: 10px;width: 75px;height: 20px"/></span>
+                <br/>
+                <input type="reset" value="重置"  style=" margin-top: 10px;margin-left: 70px;" />
+                <input type="submit" value="登录" style="margin-left: 18px"/>
+      </div>
+    </form>
+</body>
+</html>
