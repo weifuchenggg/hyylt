@@ -31,4 +31,7 @@ public class userserviceimpl implements userservice {
         return this.userMapper.selectByPrimaryKey(userid);
 
     }
+
+
+
 }

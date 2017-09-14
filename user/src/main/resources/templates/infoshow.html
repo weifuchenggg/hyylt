@@ -29,12 +29,12 @@
 <form  action="/user/update" method="post">
 
         用户: <input type="text" th:value="${user.userid}" id="id" name="userid" readonly="readonly" style="width:150px;height:23px;"/><br/>
-        昵称: <input type="text" th:value="${user.username}" id="username" name="username" readonly="readonly" style="width:150px;height:23px; margin-top: 10px"/><br/>
-        密码: <input type="text" th:value="${user.userpassword}"  name="userpassword" readonly="readonly" style="width:150px;height:23px; margin-top: 10px"/><br/>
-        签名: <input type="text" th:value="${user.usersignature}" name="usersignature" id="usersignature" readonly="readonly" style="width:150px;height:23px; margin-top: 10px"/><br/>
+        昵称: <input type="text" th:value="${user.username}" id="username" name="username" style="width:150px;height:23px; margin-top: 10px"/><br/>
+        密码: <input type="text" th:value="${user.userpassword}"  name="userpassword"  style="width:150px;height:23px; margin-top: 10px"/><br/>
+        签名: <input type="text" th:value="${user.usersignature}" name="usersignature" id="usersignature"  style="width:150px;height:23px; margin-top: 10px"/><br/>
         等级: <input type="text" th:value="${user.usergrade}"  name="usergrade" readonly="readonly" style="width:150px;height:23px; margin-top: 10px"/><br/>
         金币: <input type="text" th:value="${user.usergold}" name="usergold" readonly="readonly" style="width:150px;height:23px; margin-top: 10px"/><br/>
-        <input type="button" id="ddd" value="编辑" style=" margin-top: 20px;margin-left: 40px"/>
+        <!--<input type="button" id="ddd" value="编辑" style=" margin-top: 20px;margin-left: 40px"/>-->
         <input type="submit" id="ddd1" value="保存" style=" margin-top: 45px;margin-left: 40px"/>
 
 </form>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -21,7 +22,7 @@ import java.util.UUID;
 
 
 @RequestMapping("/user")
-@RestController
+@Controller
 public class UserController {
 
     @Resource
@@ -31,6 +32,7 @@ public class UserController {
 
 
     @RequestMapping("/login")
+    @ResponseBody
     public String login(String userid, String userpwd, String code, HttpServletRequest request, HttpServletResponse response) {
         String code1 = (String) request.getSession().getAttribute("checkcode");
 
@@ -44,7 +46,7 @@ public class UserController {
         int i = userservice.userlogin(user.getUserid(), user.getUserpassword());
         if (i > 0) {
             if (code.equals(code1)) {
-                request.getSession().setAttribute("userid", userid);
+                request.getSession().setAttribute("user", userid);
                 System.out.print("登录成功");
             } else {
                 System.out.print("登录失败,验证码错误!");
@@ -86,8 +88,8 @@ public class UserController {
      * @return
      */
 
-    @RequestMapping("/getbyid")
-    public String getuserbyid(HttpServletRequest request) {
+    @RequestMapping("/getUserById")
+    public String getUserById(HttpServletRequest request) {
         String userid = (String) request.getSession().getAttribute("userid");
         User user = userservice.getuserbyid("wyc");
         request.setAttribute("user", user);
