@@ -4,12 +4,19 @@ import com.example.user.pojo.User;
 import com.example.user.service.userservice;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -21,7 +28,6 @@ public class UserController {
     private userservice userservice;
     @Value("${server.port}")
     String port;
-
 
 
     @RequestMapping("/login")
@@ -60,16 +66,17 @@ public class UserController {
      * @return
      */
     @RequestMapping("/update")
-    public String update(User user, HttpServletRequest request) {
+    public String update(User user, HttpServletRequest request,HttpServletResponse response) {
         System.out.print(user.getUserid() + " " + user.getUserpassword());
         String userid = (String) request.getSession().getAttribute("userid");
         System.out.print(userid);
-        user.setUserid(userid);
+
         int u = userservice.userupdate(user);
         if (u > 0) {
             System.out.print("ssss");
         }
         return "login";
+
     }
 
     /**
@@ -78,14 +85,28 @@ public class UserController {
      * @param request
      * @return
      */
+
     @RequestMapping("/getbyid")
     public String getuserbyid(HttpServletRequest request) {
         String userid = (String) request.getSession().getAttribute("userid");
-        User user = userservice.getuserbyid(userid);
-//        Object uuid = UUID.randomUUID();
-//        System.out.print(uuid);
+        User user = userservice.getuserbyid("wyc");
+        request.setAttribute("user", user);
+        List lists = new ArrayList();
+        lists.add("dd");
+        lists.add("ddd");
+        request.setAttribute("lists", lists);
         System.out.print(user);
-        return "aa";
+        return "infoshow";
+    }
+    @RequestMapping("/adduser")
+    public String  adduser(@Valid User user, BindingResult bindingResult)
+    {
+        if(bindingResult.hasErrors())
+        {
+            System.out.print(bindingResult.getFieldError().getDefaultMessage());
+return  null;
+        }
+        return "ddd";
     }
 
 }
