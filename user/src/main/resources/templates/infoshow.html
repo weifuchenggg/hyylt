@@ -19,13 +19,23 @@
         /*height: 250px;*/
         /*float: left;*/
     /*}*/
+    .top{
+        margin-top: 100px;
+        margin-left: 500px;
+
+    }
+
+    body{
+        background-color: #198bc9;
+    }
 </style>
 <body>
+<div class="top">
 <h1>用户个人信息修改</h1>
-<textarea th:text="${user.userid}"></textarea>
-<p th:text="${user.userid}"></p>
-<p th:each="list:${lists}">
-<p th:text="${list}"></p></p>
+<!--<textarea th:text="${user.userid}"></textarea>-->
+<!--<p th:text="${user.userid}"></p>-->
+<!--<p th:each="list:${lists}">-->
+<!--<p th:text="${list}"></p></p>-->
 <form  action="/user/update" method="post">
 
         用户: <input type="text" th:value="${user.userid}" id="id" name="userid" readonly="readonly" style="width:150px;height:23px;"/><br/>
@@ -35,9 +45,10 @@
         等级: <input type="text" th:value="${user.usergrade}"  name="usergrade" readonly="readonly" style="width:150px;height:23px; margin-top: 10px"/><br/>
         金币: <input type="text" th:value="${user.usergold}" name="usergold" readonly="readonly" style="width:150px;height:23px; margin-top: 10px"/><br/>
         <!--<input type="button" id="ddd" value="编辑" style=" margin-top: 20px;margin-left: 40px"/>-->
-        <input type="submit" id="ddd1" value="保存" style=" margin-top: 45px;margin-left: 40px"/>
+        <input type="submit" id="ddd1" value="保存" style="width: 100px; margin-top: 40px;margin-left: 70px"/>
 
 </form>
+</div>
 <script>
     $("#ddd1").bind("click",function() {
         $.ajax({

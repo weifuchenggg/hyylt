@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @SpringBootApplication
-//@EnableEurekaClient
+@EnableEurekaClient
 @Controller
 public class UserApplication {
 
