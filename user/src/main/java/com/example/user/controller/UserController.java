@@ -43,10 +43,12 @@ public class UserController {
         User user = new User();
         user.setUserid(userid);
         user.setUserpassword(userpwd);
-        int i = userservice.userlogin(user.getUserid(), user.getUserpassword());
-        if (i > 0) {
+        List<User> users = userservice.userlogin(user.getUserid(), user.getUserpassword());
+        System.out.print(users.get(0));
+        if (users.size() > 0) {
             if (code.equals(code1)) {
-                request.getSession().setAttribute("user", userid);
+                request.getSession().setAttribute("user", user.getUserid());
+                request.getSession().setAttribute("user",users.get(0));
                 System.out.print("登录成功");
             } else {
                 System.out.print("登录失败,验证码错误!");
