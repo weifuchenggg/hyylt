@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+
 </head>
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap-theme.css" />
+<link rel="stylesheet" type="text/css" href="/css/bt.css" />
+<style>
+    *{        margin: 0;        padding: 0;   }
+    /*顶部*/
+    .top{        width: 100%;height: 60px;background-color: #aec9ff;  }
+    /*贺州学院图标*/
+    .hzimg{        width:60px;margin-left: 40px;float: left   }
+    .bt{   height:60px;width: 30%;float: left;text-align: center;line-height: 50px;vertical-align: middle}
+    /*标题美化*/
+    .bt p{  font-size:35px;color: #fafafa;  letter-spacing: 0; letter-spacing:15px;
+         text-shadow: 0px 1px 0px #999, 0px 2px 0px #888,
+         0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555,
+         0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 }
+    .login{width: 50%;height:60px;float: right;margin-right: 30px; letter-spacing:5px;
+            text-align: center;line-height: 50px;vertical-align: middle; font-size: 23px;}
+    a{text-decoration:none}
+
+</style>
 <body>
-jkjjkjk
+    <div class="top">
+        <div class="hzimg" ><img  alt="App Logo" src="/img/1168432.png" style="height: 60px;width: 60px" /></div>
+        <div class="bt" ><p>大学生云论坛</p></div>
+        <div class="login">
+            <p  th:if="${username!=null}">
+                欢迎<a style="font-size:30px;color: #FF7F00 " th:text="${username}"></a>来到大学生云论坛&nbsp;&nbsp;
+                <a style="font-size:30px;color: #FF7F00 " th:text="退出" href="#"></a>
+            </p>
+            <p  th:if="${username==null}"> <a href="#">登录</a>&nbsp;&nbsp;&nbsp;<a href="#">注册</a></p>
+        </div>
+    </div>
+
+    <div class="container" style="background-color: #9fb221">
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><img  src="/img/1168432.png" style="height: 60px;width: 60px" /></li>
+                    <li><p>大学生云论坛</p></li>
+                    <li><p  th:if="${username!=null}">
+                        欢迎<a style="font-size:30px;color: #FF7F00 " th:text="${username}"></a>来到大学生云论坛&nbsp;&nbsp;
+                        <a style="font-size:30px;color: #FF7F00 " th:text="退出" href="#"></a>
+                    </p>
+                        <p  th:if="${username==null}"> <a href="#">登录</a>&nbsp;&nbsp;&nbsp;<a href="#">注册</a></p></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
 </body>
 </html>
