@@ -25,6 +25,11 @@ import java.util.UUID;
 @Controller
 public class UserController {
 
+    @RequestMapping("/index")
+    public String index() {
+        return "login";
+    }
+
     @Resource
     private userservice userservice;
     @Value("${server.port}")

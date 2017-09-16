@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+    function check()
+    {
+        var  name = document.form2.userid.value;
+        var  pwd = document.form2.userpwd.value;
+        var  code = document.form2.code.value;
+        if(name.length==0)
+        {
+            alert("用户名不能为空!");
+            return ;
+        }
+        if(pwd.length==0)
+        {
+            alert("密码不能为空!");
+            return ;
+        }
+        if(code.length==0)
+        {
+            alert("验证码不能为空!");
+            return ;
+        }
+        document.form2.submit();
+
+        $.ajax({
+            type : "POST",  //提交方式
+            url : "/user/login",//路径
+            success : function(result)
+            {//返回数据根据结果进行相应的处理
+                //   var s=eval(result);
+                alert(result);
+                if('false'==result.toString())
+                    alert('帐号或者密码错误！！！');
+
+                  else  alert('跳转')
+            }
+        });
+
+    }
+
+
+</script>
+<style type="text/css">
+    .top{
+
+        margin-top: 100px;
+        margin-left: 500px;
+
+    }
+    .login input{
+        width:158px;
+        height:28px;
+        margin-top: 10px;
+        border: none;
+        background-image: url(login-input.gif);
+        text-indent: 28px;
+    }
+    .login #pws {
+        background-position: 0px -29px;
+    }
+    .loginbtn .btn{
+        width: 68px;
+        height: 28px;
+        background: url(./login-btn.gif) -6px -6px;
+        border: none;
+    }
+
+</style>
+<body>
+<form action="/user/login" name="form2" method="post" >
+    <div class="top">
+        <div class="login">
+        用 户 : <input id="username" type="text" name="userid" /><br/>
+        密 码 : <input id="pws" type="password" name="userpwd"  /><br/></div>
+        验证码: <span><input id="yzm" type="text" name="code" size="6" style="padding-top: 5px"/>
+                <img src="/code/getcode" style=" margin-top: 10px;width: 75px;height: 20px"/></span>
+        <br/>
+        <div id="show"></div>
+        <div class="loginbtn">
+        <input type="reset" value="重置"  style="width: 68px;height: 28px; margin-top: 10px;margin-left: 50px;" />
+        <input onclick="check()" type="button"   class="btn" style="margin-left: 18px"/>
+    </div>
+    </div>
+</form>
+</body>
+</html>
