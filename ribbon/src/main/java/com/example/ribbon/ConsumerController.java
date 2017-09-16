@@ -15,8 +15,8 @@ public class ConsumerController {
     @Autowired
     RestTemplate restTemplate;
     @RequestMapping(value = "/user/{id}")
-    public Object add(@PathVariable String id, HttpServletRequest request) {
-        System.out.println("---------"+request.getParameter("username"));
+    public String add(@PathVariable String id, HttpServletRequest request) {
+        System.out.println("---------");
         return restTemplate.getForEntity("http://USER/user/"+id, String.class).getBody();
     }
 }

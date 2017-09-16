@@ -8,23 +8,20 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @SpringBootApplication
 @EnableEurekaClient
-@Controller
+@RestController
 public class UserApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserApplication.class, args);
 	}
 
-	@RequestMapping("/index")
-	public String index() {
-
-		return "login";
-	}
 
 }
